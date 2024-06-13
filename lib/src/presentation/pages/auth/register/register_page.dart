@@ -12,12 +12,12 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          color: const Color.fromARGB(179, 224, 223, 223),
           height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          //color: Colors.amber,
+          width: MediaQuery.of(context).size.width,          
           child:  Padding(            
-            padding:  const EdgeInsets.only(top: 45, left: 10, right: 10),
+            padding:  const EdgeInsets.only(top: 30, left: 10, right: 10),
             child: Column(
               children: [
                 const Row(
@@ -30,7 +30,7 @@ class RegisterPage extends StatelessWidget {
                         style: TextStyle(
                         //fontFamily: "Poppins",
                           fontWeight: FontWeight.w600,
-                          fontSize: 25,
+                          fontSize: 16,
                         ),
                         gradient: LinearGradient(
                         colors: [Colors.teal, Color.fromARGB(255, 5, 53, 50)],
@@ -43,18 +43,18 @@ class RegisterPage extends StatelessWidget {
                 Stack(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 35),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
                           const Icon(
                             Icons.person,
                             color: Colors.black,
-                            size: 180,
+                            size: 140,
                           ),
                           const CustomGradientText(
                             text: "Ingrese su Informacion",
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 18,
                                 //fontFamily: "Poppins",
                                 fontWeight: FontWeight.w700
                                 //height: 1.2
@@ -65,69 +65,68 @@ class RegisterPage extends StatelessWidget {
                               end: Alignment.bottomRight
                             ),
                           ),
-                          const SizedBox(height: 22,),
+                          const SizedBox(height: 18,),
                           CustomTextFieldV2(
                             label: "Numero DNI",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/dni.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Nombres",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/names.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Apellidos",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/names.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Telefono",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/phone.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Email",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/email1.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Contraseña",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             svgIconPath: "assets/icons/contraseña.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 15,),
                           CustomTextFieldV2(
                             label: "Confirmar Contraseña",
-                            sizeFont: 18,
+                            sizeFont: 14,
                             obscureText: true,
                             svgIconPath: "assets/icons/verificar.svg",
                             colorLabel: Colors.teal,
                             onChanged: (value){}
                           ),
                           const SizedBox(height: 20,),
-                          const SizedBox(height: 20,),
                           CustomButtonV2(
                             text: "Registrarse",
                             colortext: const Color.fromARGB(255, 255, 255, 255), 
-                            sizeFont: 25,                    
+                            sizeFont: 16,                    
                             onPressed: (){                              
                             },
                             color1: const Color.fromARGB(255, 10, 121, 97),

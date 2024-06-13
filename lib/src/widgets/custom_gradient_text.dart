@@ -25,3 +25,4 @@ class CustomGradientText extends StatelessWidget {
     );
   }
 }
+// Luego, cuando uses el CustomGradientText, define los estilos y gradientes según el rol:

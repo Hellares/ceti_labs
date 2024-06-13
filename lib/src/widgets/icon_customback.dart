@@ -19,7 +19,7 @@ class IconCustomBack extends StatelessWidget{
     return Container(      
      // color: Colors.green,
       height: 55,
-      width: 45,
+      width: 35,
       alignment: Alignment.centerLeft,
       child: IconButton(
           onPressed: () {

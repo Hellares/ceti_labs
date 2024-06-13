@@ -64,7 +64,7 @@ class CustomTextFieldV2 extends StatelessWidget {
         errorText: errorText,
         //prefixIcon: Icon(icon, color: colorIcon, size: sizeIcon),
         prefixIcon: _buildPrefixIcon(),
-        contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10.0), // Ajusta el padding
+        contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10.0), // Ajusta el padding
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color.fromARGB(255, 61, 61, 61)),
           borderRadius: BorderRadius.circular(8.0),
