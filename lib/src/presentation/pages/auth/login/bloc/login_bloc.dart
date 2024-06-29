@@ -63,7 +63,7 @@ class LoginBloc extends Bloc<LoginEvent,LoginState> {
       state.copyWith(
         password: BlocFormItem(
           value: event.password.value,
-          error:  event.password.value.isNotEmpty && event.password.value.length <= 6  ? null : 'Minimo 6 caracteres'
+          //error:  event.password.value.isNotEmpty && event.password.value.length <= 6  ? null : 'Minimo 6 caracteres',
         ),
         formKey: formKey
       )

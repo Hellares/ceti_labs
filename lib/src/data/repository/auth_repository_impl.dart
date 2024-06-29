@@ -1,7 +1,8 @@
 import 'package:ceti_labs/src/data/dataSource/local/shared_pref.dart';
 import 'package:ceti_labs/src/data/dataSource/remote/service/auth_service.dart';
 import 'package:ceti_labs/src/domain/models/auth_response.dart';
-import 'package:ceti_labs/src/domain/models/user.dart';
+import 'package:ceti_labs/src/domain/models/auth_response_register.dart';
+import 'package:ceti_labs/src/domain/models/user_register.dart';
 import 'package:ceti_labs/src/domain/repository/auth_repository.dart';
 import 'package:ceti_labs/src/domain/utils/resource.dart';
 
@@ -20,9 +21,8 @@ class AuthRepositoryImpl implements AuthRepository{
   }
 
   @override
-  Future<Resource<AuthResponse>> register(User user) {
-    throw UnimplementedError();
-    //return authService.register(user);
+  Future<Resource<AuthResponseRegister>> register(UserRegister user) {
+    return authService.register(user);
   }
   
   @override
@@ -40,9 +40,10 @@ class AuthRepositoryImpl implements AuthRepository{
     sharedPref.save('user', authResponse.toJson());
   }
   
-  // @override
-  // Future<bool> logout() async {
-  //   return await sharedPref.remove('user');
-  // }
+
+  @override
+  Future<bool> logout() async {
+    return await sharedPref.remove('user');
+  }
 
 }

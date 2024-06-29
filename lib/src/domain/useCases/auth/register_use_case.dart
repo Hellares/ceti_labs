@@ -1,11 +1,12 @@
-// import 'package:app_ecommerce/src/domain/models/user.dart';
-// import 'package:app_ecommerce/src/domain/repository/auth_repository.dart';
 
-// class RegisterUseCase{
+import 'package:ceti_labs/src/domain/models/user_register.dart';
+import 'package:ceti_labs/src/domain/repository/auth_repository.dart';
 
-//   AuthRepository repository;
+class RegisterUseCase{
 
-//   RegisterUseCase(this.repository);
+  AuthRepository repository;
 
-//   run(User user) => repository.register(user);
-// }
+  RegisterUseCase(this.repository);
+
+  run(UserRegister user) => repository.register(user);
+}

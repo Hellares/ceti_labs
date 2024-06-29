@@ -50,7 +50,10 @@ class LoginContent extends StatelessWidget {
                 _buttonLogin(),
                 _textNotAccount(),
                 const SizedBox(height: 15,),
-                _buttomRegistrate(context),                    
+                _buttomRegistrate(context),      
+                //Lottie.asset(
+                  //'assets/lottie/icons8-lock.json'
+               // )              
               ],
             ),
           ),
@@ -148,6 +151,7 @@ class LoginContent extends StatelessWidget {
       colorLabel: Colors.teal,
       sizeFont: 14,
       svgIconPath: "assets/icons/candado.svg",
+      
       colorBorderFocus: Colors.teal,
       sizeIcon: 25,
       onChanged: (text){

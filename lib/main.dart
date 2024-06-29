@@ -1,7 +1,10 @@
 import 'package:ceti_labs/injection.dart';
 import 'package:ceti_labs/src/bloc_providers.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/admin_client_register_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/home/admin_home_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/login_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/register/register_page.dart';
+import 'package:ceti_labs/src/presentation/pages/client/home/client_home.page.dart';
 import 'package:ceti_labs/src/presentation/pages/roles/roles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +13,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +37,9 @@ class MyApp extends StatelessWidget {
           'login':(BuildContext context) => const LoginPage(),
           'register':(BuildContext context) => const RegisterPage(),
           'roles':(BuildContext context) => const RolesPage(),
+          'client/home':(BuildContext context) => const ClientHomePage(),
+          'admin/home':(BuildContext context) => const AdminHomePage(),
+          'admin/register/client':(BuildContext context) => const AdminClientRegisterPage(),
     
         },
       ),

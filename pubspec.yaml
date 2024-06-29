@@ -44,6 +44,8 @@ dependencies:
   get_it: ^7.6.7
   fluttertoast: ^8.2.5
   shared_preferences: ^2.2.3
+  lottie: ^2.7.0
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +79,7 @@ flutter:
     - assets/Backgrounds/
     - assets/icons/
     - assets/img/
+    - assets/lottie/
   #  - assets/RiveAssets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -104,14 +107,11 @@ flutter:
       fonts:
         - asset: assets/Fonts/pirulen.ttf
           weight: 700
-    - family: FonartoOutline
+    - family: Oxygen-Regular
       fonts:
-        - asset: assets/Fonts/FonartoOutline.ttf
+        - asset: assets/Fonts/Oxygen-Regular.ttf
           weight: 700
-    - family: SHLOP
-      fonts:
-        - asset: assets/Fonts/SHLOP.ttf
-          weight: 700
+    
 
           #FonartoOutline
   #   - family: Schyler

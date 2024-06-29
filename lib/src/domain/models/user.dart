@@ -1,8 +1,9 @@
+
 import 'package:ceti_labs/src/domain/models/role.dart';
 
 class User {
-    int id;
-    String dni;
+    int? id;
+    String? dni;
     String name;
     String lastname;
     String email;
@@ -10,13 +11,13 @@ class User {
     String? password;
     String? confirmarPassword;
     String? image;
-    dynamic notificationToken;
-    bool isActive;
-    List<Role> roles;
+    String? notificationToken;
+    bool? isActive;
+    List<Role>? roles;
 
     User({
-        required this.id,
-        required this.dni,
+        this.id,
+        this.dni,
         required this.name,
         required this.lastname,
         required this.email,
@@ -24,10 +25,19 @@ class User {
         this.password,
         this.confirmarPassword,
         this.image,
-        required this.notificationToken,
-        required this.isActive,
-        required this.roles,
+        this.notificationToken,
+        this.isActive,
+        this.roles,
     });
+
+    static List<User> fromJsonList(List<dynamic> jsonList){
+      List<User> toList = [];
+      for (var item in jsonList) { 
+        User user = User.fromJson(item);
+        toList.add(user);
+      }
+      return toList;
+    }
 
     factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"] ?? 0,
@@ -56,6 +66,6 @@ class User {
         "image": image,
         "notification_token": notificationToken,
         "isActive": isActive,
-        "roles": List<dynamic>.from(roles.map((x) => x.toJson())),
+        "roles": roles != null ? List<dynamic>.from(roles!.map((x) => x.toJson())) : [],
     };
 }
