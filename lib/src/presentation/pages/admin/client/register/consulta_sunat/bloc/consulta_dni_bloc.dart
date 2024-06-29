@@ -13,19 +13,19 @@ class ConsultaDniBloc extends Bloc<ConsultaDniEvent, ConsultaDniState>{
   ConsultaDniBloc(this.sunatUseCases):super(ConsultaDniState()){
 
     on<DniChangedSunat>(_onDniChanged);
-    on<NombreChanged>(_onNombreChanged);
+    // on<NombreChanged>(_onNombreChanged);
     on<ButtonPressed>(_onButtonPressed);
   }
 
 
 
-  Future<void> _onNombreChanged(NombreChanged event, Emitter<ConsultaDniState> emit) async {
-    emit(
-      state.copyWith(
-        nombres: event.nombre,
-      )
-    );
-  }
+  // Future<void> _onNombreChanged(NombreChanged event, Emitter<ConsultaDniState> emit) async {
+  //   emit(
+  //     state.copyWith(
+  //       nombres: event.nombre,
+  //     )
+  //   );
+  // }
 
   Future<void>_onDniChanged(DniChangedSunat event, Emitter<ConsultaDniState> emit) async {
     emit(

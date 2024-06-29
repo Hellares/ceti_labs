@@ -18,12 +18,12 @@ class DniChangedSunat extends ConsultaDniEvent{
   List<Object?> get props => [numberDni];
 }
 
-class NombreChanged extends ConsultaDniEvent{
-  final String nombre;
-  const NombreChanged({required this.nombre});
-  @override
-  List<Object?> get props => [nombre];
-}
+// class NombreChanged extends ConsultaDniEvent{
+//   final String nombre;
+//   const NombreChanged({required this.nombre});
+//   @override
+//   List<Object?> get props => [nombre];
+// }
 
 class ButtonPressed extends ConsultaDniEvent{
   const ButtonPressed();
