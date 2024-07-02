@@ -19,6 +19,7 @@ class RegisterClientBloc extends Bloc<RegisterClientEvent, RegisterClientState> 
     on<RegisterPhoneChanged>(_onPhoneChanged);
     on<RegisterPasswordChanged>(_onPasswordChanged);
     on<RegisterFormSubmit>(_onRegisterFormSubmit);
+    on<FormReset>(_onFormReset);
   }
   
   final formKey = GlobalKey<FormState>();
@@ -116,6 +117,10 @@ class RegisterClientBloc extends Bloc<RegisterClientEvent, RegisterClientState> 
         formKey: formKey
       )
     );
+  }
+
+  Future<void>_onFormReset(FormReset event, Emitter<RegisterClientState> emit) async {
+    state.formKey?.currentState?.reset();
   }
 
 }

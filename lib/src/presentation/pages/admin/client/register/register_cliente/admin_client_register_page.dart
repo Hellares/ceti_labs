@@ -1,5 +1,7 @@
 import 'package:ceti_labs/src/domain/utils/resource.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/consulta_sunat/bloc/consulta_dni_event.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/register_client_bloc.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/register_client_event.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/register_client_state.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/consulta_sunat/bloc/consulta_dni_bloc.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/consulta_sunat/bloc/consulta_dni_state.dart';
@@ -21,8 +23,6 @@ class _AdminClientRegisterPageState extends State<AdminClientRegisterPage> {
   ConsultaDniBloc? _blocDni;
   RegisterClientBloc? _blocRegister;
 
-  
-
   @override
   Widget build(BuildContext context) {
     _blocDni = BlocProvider.of<ConsultaDniBloc>(context);
@@ -39,8 +39,11 @@ class _AdminClientRegisterPageState extends State<AdminClientRegisterPage> {
                 final responseState = state.response;
                 if (responseState is Error) {
                   Fluttertoast.showToast(
-                      msg: responseState.message,
-                      toastLength: Toast.LENGTH_LONG);
+                    msg: responseState.message,
+                    toastLength: Toast.LENGTH_LONG);
+                }else if( responseState is Success){
+                  
+                  _blocDni?.add(ResetSunatForm());
                 }
               },
             ),
@@ -58,19 +61,19 @@ class _AdminClientRegisterPageState extends State<AdminClientRegisterPage> {
           child: Column(
           children: [
             BlocBuilder<ConsultaDniBloc, ConsultaDniState>(
-              builder: (context, state) {
-                if (state is Loading) {
+              builder: (context, stateDni) {
+                if (stateDni is Loading) {
                   return Center(child: CircularProgressIndicator());
                 }
                 
-                return ConsultaDniContent(_blocDni, state);
+                return ConsultaDniContent(_blocDni,stateDni,);
               },
             ),
             BlocBuilder<RegisterClientBloc, RegisterClientState>(
-              builder: (context, state) {
+              builder: (context, state, ) {
               
                 return AdminClientRegisterContent(
-                  _blocDni, _blocRegister, state, 
+                  _blocDni, _blocRegister, state
                   
                 );
               },

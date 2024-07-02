@@ -5,6 +5,7 @@ import 'package:ceti_labs/src/presentation/pages/admin/client/list/bloc/admin_cl
 import 'package:ceti_labs/src/presentation/pages/admin/client/list/bloc/admin_client_list_event.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/list/bloc/admin_client_list_state.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/admin_client_register_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/r_page.dart';
 import 'package:ceti_labs/src/widgets/page_animation_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +40,8 @@ class _AdminClientListPageState extends State<AdminClientListPage> {
           Navigator.push(
             context,
             PageAnimationRoutes(
-              widget: const AdminClientRegisterPage(),
+              //widget: const AdminClientRegisterPage(),
+              widget: const RPage(),
               ejex: 0.8,
               ejey: 0.8
             )

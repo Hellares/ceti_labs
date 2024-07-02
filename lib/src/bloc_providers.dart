@@ -7,6 +7,8 @@ import 'package:ceti_labs/src/presentation/pages/admin/client/list/bloc/admin_cl
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/register_client_bloc.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/register_client_event.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/consulta_sunat/bloc/consulta_dni_bloc.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_bloc.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_event.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/home/bloc/admin_home_bloc.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/bloc/login_bloc.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/bloc/login_event.dart';
@@ -21,5 +23,6 @@ List<BlocProvider> blocProviders = [
   BlocProvider<AdminHomeBloc>(create: (context) => AdminHomeBloc(locator<AuthUseCases>())),
   BlocProvider<AdminClientListBloc>(create: (context) => AdminClientListBloc(locator<UsersUseCases>())),
   BlocProvider<ConsultaDniBloc>(create: (context) => ConsultaDniBloc(locator<SunatUseCases>())),
+  BlocProvider<UnoSoloBloc>(create: (context) => UnoSoloBloc(locator<SunatUseCases>(),locator<AuthUseCases>())..add(UnosoloInitEvent())),
 ];
 

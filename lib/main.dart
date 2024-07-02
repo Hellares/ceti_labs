@@ -1,6 +1,7 @@
 import 'package:ceti_labs/injection.dart';
 import 'package:ceti_labs/src/bloc_providers.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/admin_client_register_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/r_page.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/home/admin_home_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/login_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/register/register_page.dart';
@@ -27,8 +28,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-        
+        theme: ThemeData(        
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
           'client/home':(BuildContext context) => const ClientHomePage(),
           'admin/home':(BuildContext context) => const AdminHomePage(),
           'admin/register/client':(BuildContext context) => const AdminClientRegisterPage(),
+          'admin/register/client/unosolo':(BuildContext context) => const RPage(),
     
         },
       ),

@@ -13,19 +13,9 @@ class ConsultaDniBloc extends Bloc<ConsultaDniEvent, ConsultaDniState>{
   ConsultaDniBloc(this.sunatUseCases):super(ConsultaDniState()){
 
     on<DniChangedSunat>(_onDniChanged);
-    // on<NombreChanged>(_onNombreChanged);
     on<ButtonPressed>(_onButtonPressed);
+    on<ResetSunatForm>(_onResetSunatForm);
   }
-
-
-
-  // Future<void> _onNombreChanged(NombreChanged event, Emitter<ConsultaDniState> emit) async {
-  //   emit(
-  //     state.copyWith(
-  //       nombres: event.nombre,
-  //     )
-  //   );
-  // }
 
   Future<void>_onDniChanged(DniChangedSunat event, Emitter<ConsultaDniState> emit) async {
     emit(
@@ -38,8 +28,6 @@ class ConsultaDniBloc extends Bloc<ConsultaDniEvent, ConsultaDniState>{
     );
   }
 
-
-
   Future<void> _onButtonPressed(ButtonPressed event, Emitter<ConsultaDniState> emit) async {
     emit(
       state.copyWith(
@@ -49,18 +37,37 @@ class ConsultaDniBloc extends Bloc<ConsultaDniEvent, ConsultaDniState>{
 
     Resource<SunatResponse> sunatResponse = await sunatUseCases.getDataDni.run(state.dni.value);
     if(sunatResponse is Success<SunatResponse>) {
-      print(sunatResponse.data.toJson());
+      //print(sunatResponse.data.toJson());
       emit(
         state.copyWith(
+          numberDni: sunatResponse.data.data.numero,
+          nombres: sunatResponse.data.data.nombres,
+          apellidos: '${sunatResponse.data.data.apellidoPaterno} ${sunatResponse.data.data.apellidoMaterno}',
           response: sunatResponse
-        )
+          ),
+        
       );
+
     }else if(sunatResponse is Error){
       emit(
         state.copyWith(
+          numberDni: null,
+          nombres: null,
+          apellidos: null,
           response: sunatResponse
         )
       );
     }
+  }
+
+  Future<void> _onResetSunatForm(ResetSunatForm event, Emitter<ConsultaDniState> emit) async {
+    emit(
+      state.copyWith(
+        numberDni: null,
+        nombres: null,
+        apellidos: null,
+        response: null
+      )
+    );
   }
 }

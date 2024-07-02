@@ -11,7 +11,7 @@ class ConsultaDniContent extends StatelessWidget {
   final ConsultaDniState state;
 
 
-  const ConsultaDniContent(this.bloc, this.state, {super.key});
+  const ConsultaDniContent(this.bloc, this.state,  {super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +45,15 @@ class ConsultaDniContent extends StatelessWidget {
                 onPressed: () {
                   bloc?.add(ButtonPressed());
                 },
-              ),
+              ), 
             ],
           ), 
+          
+          // CustomTextFieldV3(
+          //   controller: TextEditingController(text: state.nombres),
+          //   label: 'nombres',
+          //   onChanged: (text) {}
+          // )
         ],
       ),
     );

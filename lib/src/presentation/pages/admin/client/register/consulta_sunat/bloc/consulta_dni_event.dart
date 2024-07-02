@@ -7,10 +7,6 @@ abstract class ConsultaDniEvent extends Equatable{
   List<Object?> get props => [];
 }
 
-class InitEvent extends ConsultaDniEvent{
-  const InitEvent();
-}
-
 class DniChangedSunat extends ConsultaDniEvent{
   final BlocFormItem numberDni;
   const DniChangedSunat({required this.numberDni});
@@ -18,12 +14,11 @@ class DniChangedSunat extends ConsultaDniEvent{
   List<Object?> get props => [numberDni];
 }
 
-// class NombreChanged extends ConsultaDniEvent{
-//   final String nombre;
-//   const NombreChanged({required this.nombre});
-//   @override
-//   List<Object?> get props => [nombre];
-// }
+class ResetSunatForm extends ConsultaDniEvent{
+  const ResetSunatForm();
+  @override
+  List<Object?> get props => [];
+}
 
 class ButtonPressed extends ConsultaDniEvent{
   const ButtonPressed();

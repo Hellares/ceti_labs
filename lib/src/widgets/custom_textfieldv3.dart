@@ -18,6 +18,8 @@ class CustomTextFieldV3 extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextStyle? style;
+  final TextEditingController? controller;
+  final bool? enabled;
 
   const CustomTextFieldV3({
     Key? key,
@@ -36,14 +38,17 @@ class CustomTextFieldV3 extends StatelessWidget {
 
     this.validator,
     this.obscureText = false, 
-    this.initialValue = '',
+    this.initialValue,
     this.keyboardType = TextInputType.text,  
     this.style, 
+    this.controller,
+    this.enabled = true,
   }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       initialValue: initialValue,
       onChanged: (text) {
@@ -51,6 +56,7 @@ class CustomTextFieldV3 extends StatelessWidget {
       },
       validator: validator,
       cursorColor: const Color.fromRGBO(0, 0, 0, 1),
+      enabled: enabled,
       decoration: InputDecoration(
         isDense: true,
         label: Text(
@@ -81,11 +87,15 @@ class CustomTextFieldV3 extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.redAccent),
           borderRadius: BorderRadius.circular(10),
         ),
+        disabledBorder: OutlineInputBorder( // Add this for maintaining border design when disabled
+          borderSide: BorderSide(color: const Color.fromARGB(255, 0, 0, 0).withOpacity(1)), // Set your preferred color
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
       style: TextStyle(
         fontSize: sizeFont,
         fontWeight: FontWeight.bold,
-        color: colorFont,
+        color: enabled ?? true ? colorFont : colorFont!.withOpacity(1), // Change text color if disabled,
       ),
       keyboardType: keyboardType,
     );

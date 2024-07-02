@@ -4,8 +4,8 @@ class UserRegister {
     String? dni;
     String name;
     String lastname;
-    String email;
-    String phone;
+    String? email;
+    String? phone;
     String? password;
 
     UserRegister({
