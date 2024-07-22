@@ -1,7 +1,8 @@
 import 'package:ceti_labs/injection.dart';
 import 'package:ceti_labs/src/bloc_providers.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/admin_client_register_page.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/r_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/r_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/device/list/admin_device_list_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/device/register_device/admin_register_device_page.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/home/admin_home_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/login_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/register/register_page.dart';
@@ -20,7 +21,6 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -39,8 +39,9 @@ class MyApp extends StatelessWidget {
           'roles':(BuildContext context) => const RolesPage(),
           'client/home':(BuildContext context) => const ClientHomePage(),
           'admin/home':(BuildContext context) => const AdminHomePage(),
-          'admin/register/client':(BuildContext context) => const AdminClientRegisterPage(),
-          'admin/register/client/unosolo':(BuildContext context) => const RPage(),
+          'admin/register/client/unosolo':(BuildContext context) => const RPage(),//registerCliente
+          'admin/device/list':(BuildContext context) => const AdminDeviceListPage(),
+          'admin/device/register':(BuildContext context) => const AdminRegisterDevicePage(),
     
         },
       ),

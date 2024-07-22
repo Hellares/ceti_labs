@@ -1,26 +1,8 @@
 
-import 'package:ceti_labs/src/data/dataSource/local/shared_pref.dart';
-import 'package:ceti_labs/src/data/dataSource/remote/service/sunat_service.dart';
-import 'package:ceti_labs/src/data/dataSource/remote/service/users_service.dart';
-import 'package:ceti_labs/src/data/repository/auth_repository_impl.dart';
-import 'package:ceti_labs/src/data/dataSource/remote/service/auth_service.dart';
-import 'package:ceti_labs/src/data/repository/sunat_repository_impl.dart';
-import 'package:ceti_labs/src/data/repository/users_repository_impl.dart';
-import 'package:ceti_labs/src/domain/models/auth_response.dart';
-import 'package:ceti_labs/src/domain/repository/auth_repository.dart';
-import 'package:ceti_labs/src/domain/repository/sunat_repository.dart';
-import 'package:ceti_labs/src/domain/repository/users_repository.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/auth_use_cases.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/get_user_session_usecase.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/login_use_case.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/logout_use_case.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/register_use_case.dart';
-import 'package:ceti_labs/src/domain/useCases/auth/save_user_session_usecase.dart';
-import 'package:ceti_labs/src/domain/useCases/sunat/get_data_dni_use_case.dart';
-import 'package:ceti_labs/src/domain/useCases/sunat/sunat_use_cases.dart';
-import 'package:ceti_labs/src/domain/useCases/users/get_user_use_case.dart';
-import 'package:ceti_labs/src/domain/useCases/users/users_use_cases.dart';
-import 'package:injectable/injectable.dart';
+import 'package:ceti_labs/src/di/di.dart';
+import 'package:ceti_labs/src/domain/useCases/devices/assign_component_todevice_use_case.dart';
+import 'package:ceti_labs/src/domain/useCases/devices/register_device_use_case.dart';
+
 
 @module
 abstract class AppModule{
@@ -57,6 +39,12 @@ abstract class AppModule{
   SunatRepository get sunatRepository => SunatRepositoryImpl(sunatService);
 
   @injectable
+  DeviceService get deviceService => DeviceService(token);
+
+  @injectable
+  DeviceRepository get deviceRepository => DeviceRepositoryImpl(deviceService);
+
+  @injectable
   AuthUseCases get authUseCases => AuthUseCases(
     login: LoginUseCase(authRepository), 
     register: RegisterUseCase(authRepository),
@@ -68,10 +56,19 @@ abstract class AppModule{
   @injectable
   UsersUseCases get usersUseCases => UsersUseCases(
     getUsers: GetUserUseCase(usersRepository),
+    getUserByDni: GetUserByDniUseCase(usersRepository),
   );
   
   @injectable
   SunatUseCases get sunatUseCases => SunatUseCases(
     getDataDni: GetDataDniUseCase(sunatRepository),
+  );
+
+  @injectable
+  DevicesUseCases get devicesUseCases => DevicesUseCases(
+    getDevices: GetDeviceUseCase(deviceRepository),
+    getComponentByDevice: GetComponentByDeviceUseCase(deviceRepository),
+    assignComponentToDevice: AssignComponentToDeviceUseCase(deviceRepository),
+    registerDevice: RegisterDeviceUseCase(deviceRepository)
   );
 }

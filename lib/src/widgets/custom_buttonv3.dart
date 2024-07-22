@@ -11,6 +11,7 @@ class CustomButtonV3 extends StatelessWidget {
   final List<Color> borderGradientColors;
   final BorderRadiusGeometry borderRadius;
   final double letterSpacing;
+  final String fontFamily;
 
   const CustomButtonV3({
     Key? key,
@@ -29,6 +30,7 @@ class CustomButtonV3 extends StatelessWidget {
       bottomRight: Radius.circular(18),
     ),    
     this.letterSpacing = 1.0,
+    this.fontFamily = 'Araboto Normal 400',
   }) : super(key: key);
 
   @override
@@ -60,6 +62,7 @@ class CustomButtonV3 extends StatelessWidget {
             style: TextStyle(
               color: colortext,
               fontSize: sizeFont,
+              fontFamily: fontFamily,
               fontWeight: FontWeight.w600,
               letterSpacing: letterSpacing,
             ),

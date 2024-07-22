@@ -11,4 +11,9 @@ class UsersRepositoryImpl extends UsersRepository{
   Future<Resource<List<User>>> getUser() {
     return userService.getUsers();
   }
+  
+  @override
+  Future<Resource<List<User>>> getUserByDni(String dni) {
+    return userService.getUserByDni(dni);
+  }
 }

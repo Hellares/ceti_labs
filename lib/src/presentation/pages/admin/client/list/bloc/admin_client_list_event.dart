@@ -13,3 +13,11 @@ class GetClients extends AdminClientListEvent{
   @override
   List<Object?> get props => [];
 }
+
+class SearchClients extends AdminClientListEvent{
+  final String dni;
+  //final String name;
+  const SearchClients({required this.dni});
+  @override
+  List<Object?> get props => [dni];
+}

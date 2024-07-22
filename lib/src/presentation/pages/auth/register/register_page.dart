@@ -13,7 +13,7 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: const Color.fromARGB(179, 224, 223, 223),
+          color: Color.fromARGB(179, 255, 255, 255),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,          
           child:  Padding(            
@@ -49,7 +49,7 @@ class RegisterPage extends StatelessWidget {
                           const Icon(
                             Icons.person,
                             color: Colors.black,
-                            size: 140,
+                            size: 130,
                           ),
                           const CustomGradientText(
                             text: "Ingrese su Informacion",

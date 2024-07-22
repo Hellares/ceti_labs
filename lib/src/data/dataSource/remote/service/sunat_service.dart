@@ -11,7 +11,7 @@ class SunatService{
   SunatService();
   Future<Resource<SunatResponse>> getDniSunat(String numberDni) async{
     try {
-      Uri url = Uri.https(ApiConfig.apiCetiLabs, '/sunat/$numberDni');
+      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/sunat/$numberDni');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         //"Authorization": await token

@@ -12,7 +12,7 @@ class UsersService{
 
   Future<Resource<List<User>>> getUsers() async{
     try {
-      Uri url = Uri.https(ApiConfig.apiCetiLabs, '/users');
+      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/users');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token
@@ -21,6 +21,27 @@ class UsersService{
       final data = jsonDecode(response.body);
       if(response.statusCode == 200 || response.statusCode == 201){        
         List<User> users = User.fromJsonList(data);
+        return Success(users);
+      }
+      else{
+        return Error(listToString(data['message']));
+      }
+    } catch (e) {
+      return Error(e.toString());
+    }
+  }
+
+  Future<Resource<List<User>>> getUserByDni(String dni) async{
+    try {
+      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/users/$dni');
+      Map<String, String> headers = { 
+        "Content-Type": "application/json",
+        "Authorization": await token
+        };
+      final response = await http.get(url, headers: headers);
+      final data = jsonDecode(response.body);
+      if(response.statusCode == 200 || response.statusCode == 201){
+        List<User> users = User.fromJsonListOne(data);
         return Success(users);
       }
       else{

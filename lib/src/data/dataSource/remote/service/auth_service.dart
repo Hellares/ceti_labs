@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 class AuthService{
   Future<Resource<AuthResponse>> login(String dni, String password) async {
     try{
-      Uri url = Uri.https(ApiConfig.apiCetiLabs, '/auth/login');
+      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/auth/login');
       Map<String, String> headers = { "Content-Type": "application/json" };
       String body = json.encode({
         'dni': dni,
@@ -37,7 +37,7 @@ class AuthService{
 
   Future<Resource<AuthResponseRegister>> register(UserRegister user) async {
     try{
-      Uri url = Uri.https(ApiConfig.apiCetiLabs, '/auth/register');
+      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/auth/register');
       Map<String, String> headers = { "Content-Type": "application/json" };
       String body = json.encode(user.toJson());
       final response = await http.post(url, headers: headers, body: body);

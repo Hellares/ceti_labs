@@ -20,6 +20,8 @@ class CustomTextFieldV3 extends StatelessWidget {
   final TextStyle? style;
   final TextEditingController? controller;
   final bool? enabled;
+  final double? height;
+  final double? width;
 
   const CustomTextFieldV3({
     Key? key,
@@ -34,8 +36,6 @@ class CustomTextFieldV3 extends StatelessWidget {
     this.colorBorderFocus = Colors.black,
     this.sizeIcon = 16,
     this.sizeFont = 16,
-
-
     this.validator,
     this.obscureText = false, 
     this.initialValue,
@@ -43,6 +43,8 @@ class CustomTextFieldV3 extends StatelessWidget {
     this.style, 
     this.controller,
     this.enabled = true,
+    this.height = 11.0,
+    this.width
   }): super(key: key);
 
   @override
@@ -70,7 +72,7 @@ class CustomTextFieldV3 extends StatelessWidget {
         errorText: errorText,
         //prefixIcon: Icon(icon, color: colorIcon, size: sizeIcon),
         prefixIcon: _buildPrefixIcon(),
-        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0), // Ajusta el padding
+        contentPadding: EdgeInsets.symmetric(vertical: height ?? 11, horizontal: width ?? 10), // Ajusta el padding -- altura de la caja texto
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color.fromARGB(255, 61, 61, 61)),
           borderRadius: BorderRadius.circular(10),

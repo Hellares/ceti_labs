@@ -1,9 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_bloc.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_event.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_state.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/unosolo_bloc.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/unosolo_event.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/unosolo_state.dart';
 import 'package:ceti_labs/src/presentation/utils/bloc_form_item.dart';
 import 'package:ceti_labs/src/widgets/custom_buttonv2.dart';
 import 'package:ceti_labs/src/widgets/custom_buttonv3.dart';
@@ -40,7 +40,7 @@ class _RContenteState extends State<RContente> {
         //});
       }
     }, onError: (error) {
-      print('Error in blocregisterClient stream: $error');
+      //print('Error in blocregisterClient stream: $error');
     }); 
     
 
@@ -142,9 +142,7 @@ class _RContenteState extends State<RContente> {
                 label: 'Apellidos',
                 colorLabel: Colors.teal,
                 onChanged: (text) {
-                  //widget.blocregisterClient?.add(RegisterLastnameChanged(lastname: BlocFormItem(value: text)));
-                },
-                
+                },                
                 enabled: true,
               ),
             ),

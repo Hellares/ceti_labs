@@ -39,6 +39,15 @@ class User {
       return toList;
     }
 
+    static List<User> fromJsonListOne(dynamic jsonList) {
+    if (jsonList is List) {
+      return jsonList.map((e) => User.fromJson(e)).toList();
+    } else if (jsonList is Map<String, dynamic>) {
+      return [User.fromJson(jsonList)];
+    }
+    return [];
+  }
+
     factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"] ?? 0,
         dni: json["dni"],

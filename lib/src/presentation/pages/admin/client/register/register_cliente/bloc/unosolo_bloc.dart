@@ -4,8 +4,8 @@ import 'package:ceti_labs/src/domain/models/sunat_response.dart';
 import 'package:ceti_labs/src/domain/useCases/auth/auth_use_cases.dart';
 import 'package:ceti_labs/src/domain/useCases/sunat/sunat_use_cases.dart';
 import 'package:ceti_labs/src/domain/utils/resource.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_event.dart';
-import 'package:ceti_labs/src/presentation/pages/admin/client/register/unosolo/bloc/unosolo_state.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/unosolo_event.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_cliente/bloc/unosolo_state.dart';
 
 import 'package:ceti_labs/src/presentation/utils/bloc_form_item.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,8 @@ class UnoSoloBloc extends Bloc<UnosoloEvent, UnosoloState> {
           value: event.numberDniSearch.value,
           error: event.numberDniSearch.value.isNotEmpty ? null : 'Ingresa el numero de DNI'
         ),
-        formKey: formKey
+        formKey: formKey,
+        response: Loading()
       )
     );
   }
@@ -69,7 +70,7 @@ class UnoSoloBloc extends Bloc<UnosoloEvent, UnosoloState> {
             error: 'Ingresa sus Nombres',
           ),
           lastname: BlocFormItem(
-            value: '${sunatResponse.data.data.apellidoPaterno}${sunatResponse.data.data.apellidoMaterno}',
+            value: '${sunatResponse.data.data.apellidoPaterno} ${sunatResponse.data.data.apellidoMaterno}',
             error: 'Ingresa sus Apellidos'
           ),          
           response: sunatResponse,

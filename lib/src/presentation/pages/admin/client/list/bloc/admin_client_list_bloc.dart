@@ -9,7 +9,7 @@ class AdminClientListBloc extends Bloc<AdminClientListEvent, AdminClientListStat
   UsersUseCases usersUseCases;
   AdminClientListBloc(this.usersUseCases) : super(AdminClientListState(response: Initial())){
     on<GetClients>(_onGetClients);
-    //on<MakeCallEvent>(_onMakeCall);
+    on<SearchClients>(_onSearchClients);
     
   }
 
@@ -29,25 +29,25 @@ class AdminClientListBloc extends Bloc<AdminClientListEvent, AdminClientListStat
   }
 
   
-  // Future<void> _onMakeCall(MakeCallEvent event, Emitter<AdminClientListState> emit) async {
-  //   emit(
-  //     state.copyWith(
-  //       response: Loading(),
-  //     )
-  //   );
-  //   try {
-  //     Resource response = await usersUseCases.callerPhone.run(event.phone);
-  //     emit(
-  //       state.copyWith(
-  //         response: Success(response),
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         response: Error(e.toString()),
-  //       ),
-  //     );
-  //   }
-  // }
+  Future<void> _onSearchClients(SearchClients event, Emitter<AdminClientListState> emit) async {
+    emit(
+      state.copyWith(
+        response: Loading(),
+      )
+    );
+    try {
+      Resource response = await usersUseCases.getUserByDni.run(event.dni);
+      emit(
+        state.copyWith(
+          response: response,
+        )
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          response: Error(e.toString()),
+        )
+      );
+    }
+  }
 }
