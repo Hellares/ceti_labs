@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomButtonV3 extends StatelessWidget {
+class CustomButtonV4 extends StatelessWidget {
   final String text;
   final Function() onPressed;
   final Color color1;
@@ -13,8 +13,9 @@ class CustomButtonV3 extends StatelessWidget {
   final double letterSpacing;
   final String fontFamily;
   final double height;
+  final List<BoxShadow> boxShadow;
 
-  const CustomButtonV3({
+  const CustomButtonV4({
     Key? key,
     required this.text,
     required this.onPressed,
@@ -32,41 +33,51 @@ class CustomButtonV3 extends StatelessWidget {
     ),    
     this.letterSpacing = 1.0,
     this.fontFamily = 'Araboto Normal 400',
-    this.height = 45
-  }) : super(key: key);
+    this.height = 45,
+    this.boxShadow = const [
+      BoxShadow(
+        color: Colors.black26,
+        blurRadius: 5,
+        offset: Offset(0, 4),
+      )
+    ],
+  }) :super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(      
       height: height,
-      //width: MediaQuery.of(context).size.width,
+      
       decoration: BoxDecoration(
         borderRadius: borderRadius,
         gradient: LinearGradient(colors: borderGradientColors),
+        boxShadow: boxShadow
       ),
-      padding: EdgeInsets.all(borderWidth),
+      //padding: EdgeInsets.all(borderWidth),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: borderRadius,
           gradient: LinearGradient(colors: [color1, color2]),
         ),
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: borderRadius,
-            ),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: colortext,
-              fontSize: sizeFont,
-              fontFamily: fontFamily,
-              fontWeight: FontWeight.w600,
-              letterSpacing: letterSpacing,
+        child: ClipRRect(
+          borderRadius: borderRadius,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: onPressed,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: colortext,
+                    fontSize: sizeFont,
+                    fontFamily: fontFamily,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: letterSpacing,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

@@ -4,6 +4,7 @@ import 'package:ceti_labs/src/presentation/pages/admin/client/register/register_
 import 'package:ceti_labs/src/presentation/pages/admin/device/list/admin_device_list_page.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/device/register_device/admin_register_device_page.dart';
 import 'package:ceti_labs/src/presentation/pages/admin/home/admin_home_page.dart';
+import 'package:ceti_labs/src/presentation/pages/admin/support/register/admin_register_support_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/login/login_page.dart';
 import 'package:ceti_labs/src/presentation/pages/auth/register/register_page.dart';
 import 'package:ceti_labs/src/presentation/pages/client/home/client_home.page.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           'admin/register/client/unosolo':(BuildContext context) => const RPage(),//registerCliente
           'admin/device/list':(BuildContext context) => const AdminDeviceListPage(),
           'admin/device/register':(BuildContext context) => const AdminRegisterDevicePage(),
+          'admin/register/support':(BuildContext context) => const AdminRegisterSupportPage(),//registrar un servicio tecnico
     
         },
       ),

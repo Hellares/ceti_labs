@@ -16,7 +16,8 @@ class DeviceService{
 
   Future<Resource<List<Device>>> getDevices() async{
     try {
-      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/device');
+      Uri url = ApiConfig.getUri('/device');
+      //Uri url = Uri.https(ApiConfig.apiCetiLabs, '/device');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token
@@ -37,7 +38,8 @@ class DeviceService{
 
   Future<Resource<ComponentDeviceResponse>> getComponentDevice(String compo) async{
     try {
-      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/device/components/$compo');
+      Uri url = ApiConfig.getUri('/device/components/$compo');
+      // Uri url = Uri.https(ApiConfig.apiCetiLabs, '/device/components/$compo');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token
@@ -58,7 +60,8 @@ class DeviceService{
 
   Future<Resource<ComponentDeviceResponse>> assignComponentToDevice(String idDevice, String componentName) async{
     try {
-      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/device/$idDevice/components');
+      Uri url = ApiConfig.getUri('/device/$idDevice/components');
+      // Uri url = Uri.https(ApiConfig.apiCetiLabs, '/device/$idDevice/components');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token
@@ -81,7 +84,8 @@ class DeviceService{
 
   Future<Resource<Device>> createDevice(Device device, File file) async{
     try{
-      Uri url = Uri.http(ApiConfig.apiCetiLabs,'/device');
+      Uri url = ApiConfig.getUri('/device');
+      // Uri url = Uri.https(ApiConfig.apiCetiLabs,'/device');
       final request = http.MultipartRequest('POST', url);
       request.headers['Authorization'] = await token;
       request.files.add(http.MultipartFile(

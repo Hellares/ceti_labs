@@ -12,7 +12,8 @@ class UsersService{
 
   Future<Resource<List<User>>> getUsers() async{
     try {
-      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/users');
+      Uri url = ApiConfig.getUri('/users');
+      // Uri url = Uri.https(ApiConfig.apiCetiLabs, '/users');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token
@@ -33,7 +34,8 @@ class UsersService{
 
   Future<Resource<List<User>>> getUserByDni(String dni) async{
     try {
-      Uri url = Uri.http(ApiConfig.apiCetiLabs, '/users/$dni');
+      Uri url = ApiConfig.getUri('/users/$dni');
+      // Uri url = Uri.https(ApiConfig.apiCetiLabs, '/users/$dni');
       Map<String, String> headers = { 
         "Content-Type": "application/json",
         "Authorization": await token

@@ -1,7 +1,12 @@
 
+import 'package:ceti_labs/src/data/dataSource/remote/service/support_service.dart';
+import 'package:ceti_labs/src/data/repository/support_repository_impl.dart';
 import 'package:ceti_labs/src/di/di.dart';
+import 'package:ceti_labs/src/domain/repository/support_repository.dart';
 import 'package:ceti_labs/src/domain/useCases/devices/assign_component_todevice_use_case.dart';
 import 'package:ceti_labs/src/domain/useCases/devices/register_device_use_case.dart';
+import 'package:ceti_labs/src/domain/useCases/support/register_support_use_case.dart';
+import 'package:ceti_labs/src/domain/useCases/support/supports_use_cases.dart';
 
 
 @module
@@ -45,6 +50,12 @@ abstract class AppModule{
   DeviceRepository get deviceRepository => DeviceRepositoryImpl(deviceService);
 
   @injectable
+  SupportService get supportService => SupportService(token);
+
+  @injectable
+  SupportRepository get supportRepository => SupportRepositoryImpl(supportService);
+
+  @injectable
   AuthUseCases get authUseCases => AuthUseCases(
     login: LoginUseCase(authRepository), 
     register: RegisterUseCase(authRepository),
@@ -70,5 +81,10 @@ abstract class AppModule{
     getComponentByDevice: GetComponentByDeviceUseCase(deviceRepository),
     assignComponentToDevice: AssignComponentToDeviceUseCase(deviceRepository),
     registerDevice: RegisterDeviceUseCase(deviceRepository)
+  );
+
+  @injectable
+  SupportsUseCases get supportsUseCases => SupportsUseCases(
+    register: RegisterSupportUseCase(supportRepository),
   );
 }

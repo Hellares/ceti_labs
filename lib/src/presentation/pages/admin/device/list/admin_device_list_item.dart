@@ -57,7 +57,7 @@ class AdminDeviceListItem extends StatelessWidget {
             
           ),
           trailing: GestureDetector(
-            child: Icon(Icons.abc),
+            child: Icon(Icons.image_search, color: Colors.blue, size: 25,),
             onTap: (){
               _showImageDialog(context, device!);
             },
