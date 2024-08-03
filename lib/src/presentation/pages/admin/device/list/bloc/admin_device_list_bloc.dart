@@ -9,7 +9,7 @@ class AdminDeviceListBloc extends Bloc<AdminDeviceListEvent, AdminDeviceListStat
   DevicesUseCases devicesUseCases;
   AdminDeviceListBloc(this.devicesUseCases) : super(AdminDeviceListState(response: Initial())){
     on<GetDevices>(_onGetDevices);
-    
+    on<UpdateDevices>(_onUpdateDevices);
   }
 
   Future<void> _onGetDevices(GetDevices event, Emitter<AdminDeviceListState> emit) async {
@@ -24,9 +24,11 @@ class AdminDeviceListBloc extends Bloc<AdminDeviceListEvent, AdminDeviceListStat
         response: response,
       )
     );
-
   }
 
+  Future<void> _onUpdateDevices(UpdateDevices event, Emitter<AdminDeviceListState> emit) async {
+    emit(state.copyWith(response: Loading()));
+  }
   
   
 }

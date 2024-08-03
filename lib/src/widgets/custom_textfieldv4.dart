@@ -23,10 +23,11 @@ class CustomTextFieldV4 extends StatelessWidget {
   final bool? enabled;
   final double? height;
   final double? width;
+  final String? hintText;
 
   const CustomTextFieldV4({
     Key? key,
-    this.label= 'label',
+    this.label,
     this.icon,
     required this.onChanged,
     this.svgIconPath,
@@ -47,6 +48,7 @@ class CustomTextFieldV4 extends StatelessWidget {
     this.enabled = true,
     this.height = 11.0,
     this.width,
+    this.hintText,
   }) : super(key: key);
 
     @override
@@ -69,6 +71,7 @@ class CustomTextFieldV4 extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
+        hintText: hintText,
         errorText: errorText,
         prefixIcon: _buildPrefixIcon(),
         contentPadding: EdgeInsets.symmetric(

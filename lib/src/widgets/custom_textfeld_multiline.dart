@@ -24,6 +24,7 @@ class CustomTextFieldMultiline extends StatelessWidget {
   final double? height;
   final double? width;
   final int? maxLines; // Nuevo parámetro para múltiples líneas
+  final String? hintText;
 
   const CustomTextFieldMultiline({
     Key? key,
@@ -49,6 +50,7 @@ class CustomTextFieldMultiline extends StatelessWidget {
     this.height = 11.0,
     this.width,
     this.maxLines = 1, // Por defecto, una línea
+    this.hintText,
   }) : super(key: key);
 
   @override
@@ -62,6 +64,7 @@ class CustomTextFieldMultiline extends StatelessWidget {
       cursorColor: const Color.fromRGBO(0, 0, 0, 1),
       enabled: enabled,
       maxLines: maxLines, // Usar el nuevo parámetro maxLines
+      
       decoration: InputDecoration(
         isDense: true,
         // label: Text(
@@ -72,6 +75,7 @@ class CustomTextFieldMultiline extends StatelessWidget {
         //     fontWeight: FontWeight.w700,
         //   ),
         // ),
+        hintText: hintText,
         errorText: errorText,
         prefixIcon: _buildPrefixIcon(),
         contentPadding: EdgeInsets.symmetric(

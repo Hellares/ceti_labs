@@ -14,3 +14,10 @@ class GetDevices extends AdminDeviceListEvent{
   List<Object?> get props => [];
 }
 
+class UpdateDevices extends AdminDeviceListEvent{
+  const UpdateDevices();
+
+  @override
+  List<Object?> get props => [];
+}
+
